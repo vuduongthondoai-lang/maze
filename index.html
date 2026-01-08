@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Tìm đường đi trên mê cung</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <h1>TÌM ĐƯỜNG ĐI TRÊN MÊ CUNG</h1>
+
+    <div class="main-container">
+      <div class="sidebar">
+        <div class="controls">
+          <div class="set-map">
+            <div class="rows">
+              <label>Số hàng</label>
+              <input type="number" id="rows" min="5" max="100" value="20" />
+            </div>
+
+            <div class="columns">
+              <label>Số cột</label>
+              <input type="number" id="cols" min="5" max="100" value="20" />
+            </div>
+          </div>
+
+          <button onclick="createMaze()">Tạo mê cung</button>
+
+          <label>Chức năng</label>
+          <div class="mode-buttons" id="drawModes">
+            <button class="start-btn" onclick="setMode('start', this)">
+              Đặt Start
+            </button>
+            <button class="end-btn" onclick="setMode('end', this)">
+              Đặt End
+            </button>
+            <button class="wall-btn" onclick="setMode('wall', this)">
+              Vẽ tường
+            </button>
+          </div>
+
+          <label>Thuật toán tìm đường</label>
+          <div id="algoButtons">
+            <button onclick="run('BFS', this)">BFS</button>
+            <button onclick="run('DFS', this)">DFS</button>
+            <button onclick="run('GREEDY', this)">Greedy</button>
+            <button onclick="run('ASTAR', this)">A*</button>
+               <button onclick="run('DIJKSTRA', this)">DIJKSTRA</button>
+          </div>
+
+          <button id="reset-btn" onclick="resetAll()">Reset</button>
+        </div>
+
+        <div class="stats">
+          <h3>Lịch sử so sánh</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>Thuật toán</th>
+                <th>Kích thước</th>
+                <th>Time</th>
+                <th>Node</th>
+                <th>Độ dài</th>
+              </tr>
+            </thead>
+            <tbody id="resultTable"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="maze-wrapper">
+        <div id="maze" class="maze"></div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
